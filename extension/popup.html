@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css"/>
+	 <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-91088133-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+  </head>
+  <body>
+    <section class="todoapp">
+        <h2>This is Not <i>(a)</i> Normal</h2>
+        <h1> TODO </h1>
+        <h3>💪 Daily actions to resist under the current administration 💪</h3>
+        <h4> (Complete 1/5 tasks in order to access Facebook or Twitter for the next 24 hours.) </h4>
+
+			<section class="main">
+				<ul class="todo-list">
+					<li>
+						<div class="view">
+							<input class="toggle" id="t1" type="checkbox"></input>
+							<label> 1. Call your representatives! </label>
+							<p class="desc"> Calling is the most effective way to get in contact with your Congressmen! Anxious about calling? Try going to <a href="https://5calls.org/" target="_blank">5calls</a>, which provides a list of issues and scripts to make the process easier!</p>
+						</div>
+					</li>
+					<li>
+						<div class="view">
+							<input class="toggle" id="t2" type="checkbox"></input>
+							<label> 2. Donate/Volunteer! </label>
+							<p class="desc"> There are many great organizations out there that need your help! <a href="http://jezebel.com/a-list-of-pro-women-pro-immigrant-pro-earth-anti-big-1788752078" target="_blank">Here's </a> a good starting place to find some that you care about. If you don't have money to spend, a lot of groups still need volunteers!</p>
+						</div>
+					</li>
+					<li>
+						<div class="view">
+							<input class="toggle" id="t3" type="checkbox"></input>
+							<label> 3. Help elect progressive candidates! </label>
+							<p class="desc"> The next midterm elections will be here sooner than you think, and we need to start mobilizing now! <a href="https://swingleft.org/" target="_blank">These</a> <a href="https://www.indivisibleguide.com/" target="_blank">websites</a> have resources on what you can do to swing our government back left.</p>
+						</div>
+					</li>
+					<li>
+						<div class="view">
+							<input class="toggle" id="t4" type="checkbox"></input>
+							<label> 4. Stay educated! </label>
+							<p class="desc"> Most of us are still uninformed on a lot of issues, and these gaps in knowledge can be a hindrance to helping allies. Try talking to others, or even start a book club! <a href="https://www.goodreads.com/list/show/851.Social_Justice_Books_on_Racism_Sexism_and_Class" target="_blank">Here's</a> good place to start.</p>
+						</div>
+					</li>
+					<li>
+						<div class="view">
+							<input class="toggle" id="t5" type="checkbox"></input>
+							<label> 5. Engage with local arts/culture/community! </label>
+							<p class="desc"> Some acts don't have to be overtly political! Small actions, from supporting local artists to checking up on friends, can show that lives the current adminstration think are worthless mean something.</p>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<footer class="footer">
+				<div class="filters">
+				<li id="positive">Nice! 🎉 You have <b id="minutes"></b> minutes before your sites are blocked.</li>
+				<li id="outOfTime"> You're out of time! Try picking something to do. </li>
+				<li id="negative"> You have nothing selected!
+				</li>
+				</div>
+				<button id="confirm" class="clear-completed">Confirm completion</button>
+			</footer>
+
+    </section>
+
+    <script src="dist/popup.js"></script>
+  </body>
+</html>
