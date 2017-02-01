@@ -1,3 +1,6 @@
+chrome.alarms.onAlarm.addListener(function(alarm){
+  chrome.storage.sync.set({'block': true});
+})
 
 document.getElementById("confirm").addEventListener("click", function(){
 
@@ -22,6 +25,8 @@ document.getElementById("confirm").addEventListener("click", function(){
     chrome.storage.sync.set({'block': false});
 
     var futureTime = Date.now() + 24*60*60*(1000);
+    //var futureTime = Date.now()+3*60*1000;
+
     chrome.storage.sync.set({'futureTime': futureTime});
 
     chrome.alarms.create("test", {'when': (futureTime)});
@@ -32,7 +37,7 @@ document.getElementById("confirm").addEventListener("click", function(){
     document.getElementById('positive').style.display = "none";
     document.getElementById('negative').style.display = "inline";
     //chrome.storage.sync.set({'block': true});
-    console.log('failure');
+    //console.log('failure');
   }
 
 
@@ -41,10 +46,10 @@ document.getElementById("confirm").addEventListener("click", function(){
 setInterval(function(){
   chrome.storage.sync.get('futureTime',
     function(object){
-      console.log(object);
-      var difference = (object.futureTime - Date.now())/(60*1000);
+      //console.log(object);
+      var differenceInSeconds = (object.futureTime - Date.now())/(1000);
 
-      if (difference < 0){
+      if (differenceInSeconds < 0){
         document.getElementById('outOfTime').style.display = "inline";
         document.getElementById('positive').style.display = "none";
         document.getElementById('negative').style.display = "none";
@@ -53,7 +58,8 @@ setInterval(function(){
         document.getElementById('outOfTime').style.display = "none";
         document.getElementById('positive').style.display = "inline";
         document.getElementById('negative').style.display = "none";
-        document.getElementById('minutes').innerHTML = parseInt(difference);
+        let differenceInMinutes = differenceInSeconds/60;
+        document.getElementById('minutes').innerHTML = parseInt(differenceInMinutes);
       }
     })
 }, 1000)

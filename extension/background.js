@@ -1,6 +1,7 @@
 
 chrome.alarms.onAlarm.addListener(function(alarm){
   chrome.storage.sync.set({'block': true});
+  //console.log("hey");
 })
 
 chrome.storage.sync.set({'block': true});
@@ -16,7 +17,7 @@ function pass(){
 
 chrome.storage.sync.get('block', 
 	function(object) {
-	  console.log(object);
+	  //console.log(object);
             // Notify that we saved.
 
         if (object.block){
@@ -76,16 +77,19 @@ setInterval(function(){
   chrome.storage.sync.get('futureTime',
     function(object){
 
-      var difference = parseInt( (object.futureTime - Date.now())/(60*1000) );
+      let differenceInSeconds = parseInt( (object.futureTime - Date.now())/(1000) );
+      let differenceInMinutes = parseInt(differenceInSeconds / 60);
 
-      if (difference < 0){
+
+      if (differenceInSeconds < 0){
         chrome.browserAction.setBadgeText({'text':'0'});
         chrome.browserAction.setBadgeBackgroundColor({'color':[163, 70, 70,255]});
+        chrome.storage.sync.set({'block': true});
       }
       else{
-        if (difference < 10){
+        if (differenceInMinutes < 60){
           chrome.browserAction.setBadgeBackgroundColor({'color':[69, 90, 165,255]});
-          chrome.browserAction.setBadgeText({'text':difference.toString()});
+          chrome.browserAction.setBadgeText({'text':differenceInMinutes.toString()});
         }
         else{
           chrome.browserAction.setBadgeBackgroundColor({'color':[69, 90, 165,255]});
